@@ -8,6 +8,7 @@ export default defineConfig({
     one({
       web: {
         defaultRenderMode: 'ssg',
+        deploy: 'vercel',
         sitemap: {
           baseUrl: process.env.VITE_SITE_URL || process.env.ONE_SERVER_URL || 'https://www.amohagalleria.com',
           priority: 0.8,

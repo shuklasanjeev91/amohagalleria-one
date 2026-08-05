@@ -86,6 +86,11 @@ function AddToEnquiryButton({ artworkId, slug }: { artworkId: string; slug: stri
   )
 }
 
+export async function generateStaticParams() {
+  const catalogue = await getMergedCatalogue()
+  return catalogue.artworks.map((w) => ({ slug: w.slug }))
+}
+
 export async function loader({ params }: { params: { slug: string } }) {
   const [catalogue, info] = await Promise.all([getMergedCatalogue(), getGalleryInfo()])
   const work = findArtwork(catalogue, params.slug)

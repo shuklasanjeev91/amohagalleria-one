@@ -18,6 +18,11 @@ import {
 import { getMergedCatalogue } from '~/lib/catalogue'
 import { ExhibitionStatusBadge } from '~/components/gallery/ExhibitionCard'
 
+export async function generateStaticParams() {
+  const catalogue = await getMergedCatalogue()
+  return catalogue.exhibitions.map((e) => ({ slug: e.slug }))
+}
+
 export async function loader({ params }: { params: { slug: string } }) {
   const [catalogue, info] = await Promise.all([getMergedCatalogue(), getGalleryInfo()])
   const show = findExhibition(catalogue, params.slug)

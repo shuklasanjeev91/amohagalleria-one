@@ -15,6 +15,11 @@ import {
 } from '~/lib/amoha'
 import { getMergedCatalogue } from '~/lib/catalogue'
 
+export async function generateStaticParams() {
+  const catalogue = await getMergedCatalogue()
+  return catalogue.artists.map((a) => ({ slug: a.slug }))
+}
+
 export async function loader({ params }: { params: { slug: string } }) {
   const catalogue = await getMergedCatalogue()
   const artist = findArtist(catalogue, params.slug)
