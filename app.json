@@ -1,0 +1,25 @@
+{
+  "expo": {
+    "name": "amohagalleria-one",
+    "slug": "amohagalleria-one",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "plugins": [
+      "one/expo-plugin"
+    ],
+    "icon": "./public/app-icon.png",
+    "splash": {
+      "image": "./public/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#000000"
+    },
+    "ios": {
+      "bundleIdentifier": "com.natew.oneexample"
+    },
+    "android": {
+      "package": "com.natew.oneexample"
+    }
+  }
+}

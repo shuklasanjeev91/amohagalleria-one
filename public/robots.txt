@@ -1,0 +1,9 @@
+User-Agent: *
+Allow: /
+
+Disallow: /studio
+Disallow: /studio/
+Disallow: /login
+Disallow: /register
+
+Sitemap: https://www.amohagalleria.com/sitemap.xml

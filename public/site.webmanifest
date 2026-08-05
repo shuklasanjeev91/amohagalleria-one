@@ -1,0 +1,21 @@
+{
+  "name": "amohagalleria",
+  "short_name": "amohagalleria",
+  "description": "image galleria art website",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8f6f2",
+  "theme_color": "#f8f6f2",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ]
+}
