@@ -10,7 +10,6 @@ import { SiteFooter } from '~/components/gallery/SiteFooter'
 import { SiteHeader } from '~/components/gallery/SiteHeader'
 import type { SearchHit } from '~/components/gallery/SearchBar'
 import { AuthProvider } from '~/lib/AuthProvider'
-import { EnquiryCartProvider } from '~/lib/EnquiryCartProvider'
 import { getGalleryInfo, type GalleryInfo } from '~/lib/amoha'
 import { getMergedCatalogue } from '~/lib/catalogue'
 import {
@@ -61,9 +60,7 @@ function Providers({ children }: { children: ReactNode }) {
     <SafeAreaProvider>
       <TamaguiProvider config={config} defaultTheme="light">
         <Theme name="light">
-          <AuthProvider>
-            <EnquiryCartProvider>{children}</EnquiryCartProvider>
-          </AuthProvider>
+          <AuthProvider>{children}</AuthProvider>
         </Theme>
       </TamaguiProvider>
     </SafeAreaProvider>

@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from 'react'
 import { Platform, Pressable } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { Text, XStack, YStack } from 'tamagui'
-import { useEnquiryCart } from '~/lib/EnquiryCartProvider'
 import { GalleryImage } from './GalleryImage'
 import { SearchBar, type SearchHit } from './SearchBar'
 
@@ -23,7 +22,7 @@ const NOTICES = [
   {
     id: '3',
     title: 'Concierge reply',
-    body: 'Your enquiry has been received — we will follow up shortly.',
+    body: 'Your message has been received — we will follow up shortly.',
     time: 'This week',
   },
 ]
@@ -165,7 +164,6 @@ export function MobileTopBar({
   const [notifyOpen, setNotifyOpen] = useState(false)
   const [unread, setUnread] = useState(2)
   const rootRef = useRef<HTMLDivElement | null>(null)
-  const { count: cartCount } = useEnquiryCart()
 
   useEffect(() => {
     if (!notifyOpen || Platform.OS !== 'web') return
@@ -195,9 +193,6 @@ export function MobileTopBar({
 
   const actions = (
     <div className="g-mobile-topbar__actions" ref={rootRef as any}>
-      <Link href="/enquiry" className="g-mobile-topbar__enquiry" aria-label="Enquiry list">
-        Enquiry{cartCount > 0 ? ` (${cartCount})` : ''}
-      </Link>
       <button
         type="button"
         className={`g-mobile-topbar__notify${notifyOpen ? ' is-open' : ''}`}
@@ -283,18 +278,6 @@ export function MobileTopBar({
           )}
         </Link>
         <XStack alignItems="center" gap={10} position="relative">
-          <Link href="/enquiry">
-            <YStack
-              paddingHorizontal={10}
-              paddingVertical={8}
-              borderWidth={1}
-              borderColor="$borderColor"
-            >
-              <Text fontSize={11} letterSpacing={0.6} textTransform="uppercase" color="$accent">
-                Enquiry{cartCount > 0 ? ` (${cartCount})` : ''}
-              </Text>
-            </YStack>
-          </Link>
           <Pressable
             onPress={toggleNotify}
             accessibilityRole="button"

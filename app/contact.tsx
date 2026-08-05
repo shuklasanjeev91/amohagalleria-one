@@ -51,10 +51,10 @@ export default function ContactPage() {
   const mailto = info.email
     ? `mailto:${info.email}?subject=${encodeURIComponent(
         work
-          ? `Enquiry: ${work.title} by ${work.artistName}`
+          ? `Message: ${work.title} by ${work.artistName}`
           : artist
-            ? `Enquiry: works by ${artist.name}`
-            : 'Enquiry from Amoha Galleria site',
+            ? `Message: works by ${artist.name}`
+            : 'Message from Amoha Galleria site',
       )}${defaultMessage ? `&body=${encodeURIComponent(defaultMessage)}` : ''}`
     : null
 
@@ -129,7 +129,7 @@ export default function ContactPage() {
                   required
                 />
                 <GButton disabled={busy} onPress={() => void onSubmit()}>
-                  {busy ? 'Sending…' : 'Send enquiry'}
+                  {busy ? 'Sending…' : 'Send message'}
                 </GButton>
                 {mailto ? (
                   <Muted fontSize={13} marginTop="$3">
@@ -184,13 +184,9 @@ export default function ContactPage() {
             ) : null}
 
             <YStack mt="$8" borderTopWidth={1} borderColor="$borderColor" pt="$6">
-              <LabelCaps color="$color11">Enquiry list</LabelCaps>
+              <LabelCaps color="$color11">Viewings</LabelCaps>
               <Paragraph size="$3" mt="$2" color="$color11">
-                Building a shortlist? Add studio works to your{' '}
-                <Link href="/enquiry">
-                  <Text color="$accent">enquiry list</Text>
-                </Link>
-                .
+                Prefer a private viewing? Mention it in your message and the gallery will follow up.
               </Paragraph>
             </YStack>
           </YStack>

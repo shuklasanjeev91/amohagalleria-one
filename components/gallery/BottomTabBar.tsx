@@ -87,21 +87,16 @@ const navTabs = [
     match: (p: string) => p.startsWith('/artists'),
   },
   {
-    href: '/enquiry',
-    label: 'Enquiry',
-    native: '◎',
+    href: '/exhibitions',
+    label: 'Shows',
+    native: '▦',
     web: (c: string) => (
       <>
-        <path
-          d="M4 7.5h16v10H4V7.5Z"
-          stroke={c}
-          strokeWidth="1.6"
-          strokeLinejoin="round"
-        />
-        <path d="M4 8.5 12 13l8-4.5" stroke={c} strokeWidth="1.6" strokeLinejoin="round" />
+        <rect x="3.5" y="5" width="17" height="14" rx="1.5" stroke={c} strokeWidth="1.6" />
+        <path d="M8 9.5h8M8 12.5h8M8 15.5h5" stroke={c} strokeWidth="1.6" strokeLinecap="round" />
       </>
     ),
-    match: (p: string) => p.startsWith('/enquiry') || p.startsWith('/contact'),
+    match: (p: string) => p.startsWith('/exhibitions'),
   },
 ] as const
 

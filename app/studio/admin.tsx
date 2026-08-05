@@ -15,7 +15,6 @@ export default function StudioAdminDashboard() {
     artists: 0,
     artworks: 0,
     customers: 0,
-    enquiries: 0,
     pendingWorks: 0,
   })
   const [users, setUsers] = useState<StudioUserRow[]>([])
@@ -23,7 +22,13 @@ export default function StudioAdminDashboard() {
   const [err, setErr] = useState<string | null>(null)
 
   async function refresh() {
-    setCounts(await adminDashboardCounts())
+    const c = await adminDashboardCounts()
+    setCounts({
+      artists: c.artists,
+      artworks: c.artworks,
+      customers: c.customers,
+      pendingWorks: c.pendingWorks,
+    })
     setUsers(await adminListUsers())
   }
 
@@ -47,7 +52,6 @@ export default function StudioAdminDashboard() {
     { href: '/studio/admin/artists', label: 'Artists', value: counts.artists },
     { href: '/studio/admin/artworks', label: 'Artworks', value: counts.artworks },
     { href: '/studio/admin/customers', label: 'Customers', value: counts.customers },
-    { href: '/studio/admin/enquiries', label: 'New enquiries', value: counts.enquiries },
   ]
 
   return (
@@ -56,7 +60,7 @@ export default function StudioAdminDashboard() {
         <PageHeader
           eyebrow="Admin"
           title="Gallery console"
-          lede="Manage artists, artworks, visited customers, and enquiries."
+          lede="Manage artists, artworks, and visited customers."
         />
         <Container className="g-container" pb="$20" width="100%">
           <StudioNav active="admin" />

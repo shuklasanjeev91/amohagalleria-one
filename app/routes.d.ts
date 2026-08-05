@@ -11,7 +11,6 @@ declare module 'one' {
         | `/_sitemap`
         | `/artists`
         | `/contact`
-        | `/enquiry`
         | `/exhibitions`
         | `/login`
         | `/register`
@@ -20,7 +19,6 @@ declare module 'one' {
         | `/studio/admin/artists`
         | `/studio/admin/artworks`
         | `/studio/admin/customers`
-        | `/studio/admin/enquiries`
         | `/studio/profile`
         | `/studio/works`
         | `/studio/works/new`

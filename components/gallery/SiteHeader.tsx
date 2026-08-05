@@ -2,7 +2,6 @@ import { Link, usePathname } from 'one'
 import { Platform } from 'react-native'
 import { Text, XStack, YStack } from 'tamagui'
 import { useGalleryAuth } from '~/lib/AuthProvider'
-import { useEnquiryCart } from '~/lib/EnquiryCartProvider'
 import { GalleryImage } from './GalleryImage'
 import { SearchBar, type SearchHit } from './SearchBar'
 import { Container, LabelCaps } from './primitives'
@@ -40,7 +39,6 @@ export function SiteHeader({
 }) {
   const pathname = usePathname()
   const { user, isArtist, isAdmin } = useGalleryAuth()
-  const { count: cartCount } = useEnquiryCart()
   const navItems = nav
   const accountHref = isAdmin ? '/studio/admin' : isArtist ? '/studio' : '/login'
   const accountTitle = isAdmin
@@ -132,12 +130,6 @@ export function SiteHeader({
                   </Link>
                 )
               })}
-
-              {Platform.OS === 'web' ? (
-                <Link href="/enquiry" className="g-label" style={{ whiteSpace: 'nowrap' }}>
-                  Enquiry{cartCount > 0 ? ` (${cartCount})` : ''}
-                </Link>
-              ) : null}
 
               {Platform.OS === 'web' ? (
                 user ? (

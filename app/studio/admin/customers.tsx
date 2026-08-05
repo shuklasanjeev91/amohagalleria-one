@@ -81,7 +81,7 @@ export default function AdminCustomersPage() {
         <PageHeader
           eyebrow="Admin"
           title="Customers"
-          lede="Visited collectors and enquiry leads."
+          lede="Visited collectors and contact leads."
         />
         <Container className="g-container" pb="$20" width="100%">
           <StudioNav active="customers" />

@@ -126,7 +126,6 @@ export function StudioNav({ active }: { active?: string }) {
           { href: '/studio/admin/artists', label: 'Artists', key: 'artists' },
           { href: '/studio/admin/artworks', label: 'Artworks', key: 'artworks' },
           { href: '/studio/admin/customers', label: 'Customers', key: 'customers' },
-          { href: '/studio/admin/enquiries', label: 'Enquiries', key: 'enquiries' },
         ]
       : []),
   ]

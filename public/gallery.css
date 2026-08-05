@@ -4556,22 +4556,6 @@ form.g-auth-form {
   margin-bottom: 1.25rem;
 }
 
-.g-mobile-topbar__enquiry {
-  display: inline-flex;
-  align-items: center;
-  font-size: 0.6875rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--gallery-accent);
-  text-decoration: none;
-  padding: 0.45rem 0.55rem;
-  border: 1px solid var(--gallery-border);
-  white-space: nowrap;
-}
-.g-mobile-topbar__enquiry:hover {
-  border-color: var(--gallery-bronze);
-}
-
 .g-auth-submit--danger {
   background: var(--gallery-accent) !important;
   border-color: var(--gallery-accent) !important;

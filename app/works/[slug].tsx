@@ -1,5 +1,4 @@
 import { Link, useLoader } from 'one'
-import { useState } from 'react'
 import { Platform } from 'react-native'
 import { Paragraph, Text, XStack, YStack } from 'tamagui'
 import { ArrowLink } from '~/components/gallery/ArrowLink'
@@ -17,72 +16,21 @@ import {
   worksByArtist,
 } from '~/lib/amoha'
 import { getMergedCatalogue } from '~/lib/catalogue'
-import { useEnquiryCart } from '~/lib/EnquiryCartProvider'
 
-function isStudioUuid(id: string) {
-  return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(id)
-}
-
-function AddToEnquiryButton({ artworkId, slug }: { artworkId: string; slug: string }) {
-  const cart = useEnquiryCart()
-  const [busy, setBusy] = useState(false)
-  const [added, setAdded] = useState(false)
-  const [err, setErr] = useState<string | null>(null)
-  const canCart = isStudioUuid(artworkId)
-
-  if (!canCart) {
-    return (
-      <Link href={`/contact?work=${slug}`}>
-        <YStack
-          backgroundColor="$color12"
-          px="$6"
-          py="$4"
-          alignItems="center"
-          justifyContent="center"
-          hoverStyle={{ backgroundColor: '$accent' }}
-        >
-          <LabelCaps color="$background">Enquire about this work</LabelCaps>
-        </YStack>
-      </Link>
-    )
-  }
-
+function EnquireButton({ slug }: { slug: string }) {
   return (
-    <YStack gap="$3">
+    <Link href={`/contact?work=${slug}` as any}>
       <YStack
         backgroundColor="$color12"
         px="$6"
         py="$4"
         alignItems="center"
         justifyContent="center"
-        opacity={busy ? 0.6 : 1}
-        cursor="pointer"
         hoverStyle={{ backgroundColor: '$accent' }}
-        onPress={() => {
-          if (busy) return
-          setBusy(true)
-          setErr(null)
-          void cart.add(artworkId).then((res) => {
-            setBusy(false)
-            if (!res.ok) {
-              setErr(res.error)
-              return
-            }
-            setAdded(true)
-          })
-        }}
       >
-        <LabelCaps color="$background">
-          {added ? 'Added to enquiry list' : busy ? 'Adding…' : 'Add to enquiry list'}
-        </LabelCaps>
+        <LabelCaps color="$background">Enquire about this work</LabelCaps>
       </YStack>
-      {added ? (
-        <Link href="/enquiry">
-          <LabelCaps color="$accent">View enquiry list →</LabelCaps>
-        </Link>
-      ) : null}
-      {err ? <Muted color="$accent">{err}</Muted> : null}
-    </YStack>
+    </Link>
   )
 }
 
@@ -258,7 +206,7 @@ export default function ArtworkPage() {
             </YStack>
 
             <YStack mt="$10" gap="$5">
-              <AddToEnquiryButton artworkId={work.id} slug={work.slug} />
+              <EnquireButton slug={work.slug} />
               <Link href={`/contact?work=${work.slug}`}>
                 <YStack
                   borderWidth={1}

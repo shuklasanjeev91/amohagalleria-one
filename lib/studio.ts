@@ -571,19 +571,17 @@ export async function deleteOwnArtwork(id: string) {
 
 export async function adminDashboardCounts() {
   const sb = getSupabase()
-  if (!sb) return { artists: 0, artworks: 0, customers: 0, enquiries: 0, pendingWorks: 0 }
-  const [artists, artworks, customers, enquiries, pending] = await Promise.all([
+  if (!sb) return { artists: 0, artworks: 0, customers: 0, pendingWorks: 0 }
+  const [artists, artworks, customers, pending] = await Promise.all([
     sb.from('artists').select('id', { count: 'exact', head: true }),
     sb.from('artworks').select('id', { count: 'exact', head: true }),
     sb.from('customers').select('id', { count: 'exact', head: true }),
-    sb.from('enquiries').select('id', { count: 'exact', head: true }).eq('status', 'new'),
     sb.from('artworks').select('id', { count: 'exact', head: true }).eq('status', 'pending'),
   ])
   return {
     artists: artists.count || 0,
     artworks: artworks.count || 0,
     customers: customers.count || 0,
-    enquiries: enquiries.count || 0,
     pendingWorks: pending.count || 0,
   }
 }

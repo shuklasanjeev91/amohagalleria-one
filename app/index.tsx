@@ -432,7 +432,7 @@ export default function HomePage() {
               </div>
             ) : (
               <div>
-                <span className="g-label">Enquiries</span>
+                <span className="g-label">Contact</span>
                 <strong>Private</strong>
                 <em>By appointment</em>
               </div>
@@ -918,7 +918,7 @@ export default function HomePage() {
             <SectionHeading
               index={next()}
               title="The space"
-              action={<ArrowLink href="/contact">Enquire</ArrowLink>}
+              action={<ArrowLink href="/contact">Contact</ArrowLink>}
             />
           </Reveal>
           <Reveal delay={80} mt="$8">
@@ -1011,7 +1011,7 @@ export default function HomePage() {
                     href: '/contact',
                     title: 'Acquisition advice',
                     body: 'Curators help place works into new and established collections.',
-                    cta: 'Make an enquiry',
+                    cta: 'Contact the gallery',
                   },
                   {
                     href: '/contact',
